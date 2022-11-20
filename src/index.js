@@ -4,7 +4,7 @@ import { Fetch } from './fetchCountries';
 import Notiflix from 'notiflix';
 const fetch = new Fetch();
 console.log(fetch.dataChange);
-refs = {
+const refs = {
   input: document.querySelector('#search-box'),
   list: document.querySelector('.country-list'),
   div: document.querySelector('.country-info'),
