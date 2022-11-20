@@ -3,13 +3,11 @@ import debounce from 'lodash.debounce';
 import { Fetch } from './fetchCountries';
 import Notiflix from 'notiflix';
 const fetch = new Fetch();
-console.log(fetch.dataChange);
 const refs = {
   input: document.querySelector('#search-box'),
   list: document.querySelector('.country-list'),
   div: document.querySelector('.country-info'),
 };
-console.log(refs.input);
 const DEBOUNCE_DELAY = 300;
 
 refs.input.addEventListener(
