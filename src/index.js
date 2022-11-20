@@ -1,6 +1,6 @@
 import './css/styles.css';
 import debounce from 'lodash.debounce';
-import { Fetch } from './fetchCountries';
+import { Fetch } from '../src/fetchCountries.js';
 import Notiflix from 'notiflix';
 const fetch = new Fetch();
 const refs = {
