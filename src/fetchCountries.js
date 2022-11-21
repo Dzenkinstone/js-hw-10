@@ -1,5 +1,3 @@
-import Notiflix from 'notiflix';
-
 export const Fetch = class Fetch {
   constructor() {
     this.searchQuery = '';
@@ -8,17 +6,12 @@ export const Fetch = class Fetch {
   fetchCountries() {
     return fetch(
       `https://restcountries.com/v3.1/name/${this.searchQuery}?fields=name,capital,population,flags,languages`
-    )
-      .then(this.errorResponce)
-      .then(data => data)
-      .catch(error => console.log(error));
-  }
-
-  errorResponce(resp) {
-    if (!resp.ok) {
-      Notiflix.Notify.failure('Oops, there is no country with that name');
-    }
-    return resp.json();
+    ).then(resp => {
+      if (!resp.ok) {
+        throw new Error();
+      }
+      return resp.json();
+    });
   }
 
   get query() {

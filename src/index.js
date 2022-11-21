@@ -13,12 +13,11 @@ const DEBOUNCE_DELAY = 300;
 refs.input.addEventListener(
   'input',
   debounce(event => {
-    if (event.target.value != '') {
-      fetch.query = event.target.value.trim();
-      fetch.fetchCountries().then(dataChange);
-    } else {
-      clearContainer();
+    if (!event.target.value) {
+      return clearContainer();
     }
+    fetch.query = event.target.value.trim();
+    fetch.fetchCountries().then(dataChange).catch(error);
   }, DEBOUNCE_DELAY)
 );
 
@@ -54,4 +53,12 @@ function dataChange(data) {
       )}</span></div>`;
     })
     .join(''));
+}
+
+function error(error) {
+  console.log(error);
+  if (error) {
+    Notiflix.Notify.failure('Oops, there is no country with that name');
+    clearContainer();
+  }
 }
